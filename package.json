@@ -1,0 +1,20 @@
+{
+  "name": "mangajj-whatsapp",
+  "version": "1.0.0",
+  "description": "Manga reader using WhatsApp",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mangajj"
+  ],
+  "author": "https://github.com/jjeanjacques10",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.2.3",
+    "venom-bot": "^4.3.7"
+  }
+}
