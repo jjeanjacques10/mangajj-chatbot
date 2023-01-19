@@ -1,8 +1,35 @@
 # Manga Reader - Chatbot WhatsApp
 
-This is a simple chatbot for WhatsApp that allows you to read manga from the website [Manga Livre](https://mangalivre.net/).
+<p align="center">
+    <img src="https://raw.githubusercontent.com/jjeanjacques10/mangajj/main/files/MangaJJLogo.jpg" width="300"/>
+    <br />
+    <br />
+    <a href="https://mangajj.herokuapp.com/manga?limit=10&page=0&title=Naruto">Demo</a>
+    ·
+    <a href="https://github.com/jjeanjacques10/mangajj-whatsapp/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/jjeanjacques10/mangajj-whatsapp/issues">Request Feature</a>
+</p>
 
-## How to use
+<p align="center">
+   <a href="https://www.linkedin.com/in/jjean-jacques10/">
+      <img alt="Jean Jacques Barros" src="https://img.shields.io/badge/-JeanJacquesBarros-FFCC00?style=flat&logo=Linkedin&logoColor=white" />
+   </a>
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/jjeanjacques10/mangajj-whatsapp?color=FFCC00">
+
+  <a href="https://github.com/jjeanjacques10/mangajj-whatsapp/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jjeanjacques10/mangajj-whatsapp?color=FFCC00">
+  </a>
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-FFCC00">
+  <img alt="GitHub Pull Requests" src="https://img.shields.io/github/issues-pr/jjeanjacques10/mangajj-whatsapp?color=FFCC00" />
+  <a href="https://github.com/jjeanjacques10/mangajj-whatsapp/stargazers">
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/jjeanjacques10/mangajj-whatsapp?color=FFCC00&logo=github">
+  </a>
+</p>
+
+This is a simple chatbot for WhatsApp that allows you to read manga from the internet. It was developed using the [Venom Bot](https://github.com/orkestral/venom) library and the [MangaJJ Scrapper Pages API](https://github.com/jjeanjacques10/manga-scrapper-api) to get the manga chapters.
+
+## Getting started
 
 1. Install the dependencies
 
@@ -18,7 +45,27 @@ npm start
 
 3. Scan the QR code with your WhatsApp
 
+<img src="./files/qrcode.png" width=400/>
+
 4. Send the name and chapter number of the manga you want to read
 
----
-Developed by [Jean Jacques Barros](http://github.com/jjeanjacques10)
+Example: `/mangabot Naruto 698`
+
+<img src="./files/whatsapp.png" width=400/>
+
+## Integrations
+
+This project integrates with the following services:
+
+- [WhatsApp - Venom Bot](https://github.com/orkestral/venom)
+- [MangaJJ Scrapper Pages API](https://github.com/jjeanjacques10/manga-scrapper-api)
+
+<img src="./files/diagram.jpg"/>
+
+## Authors
+
+- **Jean Jacques Barros** - [jjeanjacques10](http://github.com/jjeanjacques10)
+
+## License
+
+[MIT License](LICENSE)
