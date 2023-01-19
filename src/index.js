@@ -11,7 +11,7 @@ create({
         console.log(erro)
     })
 
-const getMangaChapter = async (mangaName, mangaChapter) => {
+const getMangaChapter = async (mangaName, mangaChapter, retry = 0) => {
     try {
         const chapter = await axios.get(`http://localhost:3000/chapter?source=manga_livre&manga=${mangaName}&number=${mangaChapter}`)
         let pagesOrdered = chapter.data.pages.sort((a, b) => {
@@ -21,6 +21,10 @@ const getMangaChapter = async (mangaName, mangaChapter) => {
         })
         return pagesOrdered
     } catch (error) {
+        if (retry < 3) {
+            await new Promise(resolve => setTimeout(resolve, 15000));
+            return getMangaChapter(mangaName, mangaChapter, retry + 1)
+        }
         return []
     }
 }
@@ -43,7 +47,9 @@ const mangabot = (client, message) => {
                 const mangaName = manga.split(" ").slice(1, -1).join(" ");
                 const mangaChapter = manga.split(" ").pop()
 
-                getMangaChapter(mangaName, mangaChapter).then((pages) => {
+                client.sendText(message.from, `Buscando o capítulo ${mangaChapter} de ${mangaName}...`)
+
+                getMangaChapter(mangaName, mangaChapter, 0).then((pages) => {
                     if (pages === null || pages.length === 0) {
                         client.sendText(message.from, "Capítulo sendo baixado ou não encontrado. Aguarde alguns minutos e tente novamente.")
                         return
@@ -56,7 +62,7 @@ const mangabot = (client, message) => {
                             message.from === process.env.BOT_NUMBER ? message.to : message.from,
                             pages[i],
                             `mangabot-${mangaName}-${mangaChapter}-page-${pageNumber}`,
-                            `Page ${pageNumber}`
+                            ''
                         ).catch((error) => {
                             console.log(error)
                             client.sendText(message.from, `Ocorreu um erro ao enviar a página ${pageNumber}. Tente novamente mais tarde.`)
