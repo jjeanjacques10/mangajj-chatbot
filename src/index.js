@@ -79,13 +79,15 @@ const mangabot = (client, message) => {
             }
             break;
         case commands.help:
-            client.sendText(message.from, "Comandos disponíveis: \n/mangabot [nome do mangá] [capítulo]")
+            client.sendText(message.from, "Comandos disponíveis: \n/mangabot [nome do mangá] [número capítulo] \n\n Exemplo: /mangabot Naruto 698")
             break;
     }
 
     if (commands.hello.includes(message.text.toLowerCase())) {
         client.sendText(message.from, "Olá! Eu sou o Mangabot. Posso te ajudar a ler mangás. Digite /help para ver os comandos disponíveis.")
+        return
     }
+    client.sendText(message.from, "Desculpe, não entendi o que você quis dizer. Digite /help para ver os comandos disponíveis.")
 }
 
 async function start(client) {
