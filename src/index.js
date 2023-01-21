@@ -13,7 +13,7 @@ create({
 
 const getMangaChapter = async (mangaName, mangaChapter, retry = 0) => {
     try {
-        const chapter = await axios.get(`http://localhost:3000/chapter?source=manga_livre&manga=${mangaName}&number=${mangaChapter}`)
+        const chapter = await axios.get(`http://ec2-18-233-170-157.compute-1.amazonaws.com/chapter?source=manga_livre&manga=${mangaName}&number=${mangaChapter}`)
         let pagesOrdered = chapter.data.pages.sort((a, b) => {
             var itemA = a.split("=").pop().split("_")[0]
             var itemB = b.split("=").pop().split("_")[0]
@@ -21,8 +21,8 @@ const getMangaChapter = async (mangaName, mangaChapter, retry = 0) => {
         })
         return pagesOrdered
     } catch (error) {
-        if (retry < 3) {
-            await new Promise(resolve => setTimeout(resolve, 15000));
+        if (retry < 2) {
+            await new Promise(resolve => setTimeout(resolve, 20000)); // wating 20 seconds to retry
             return getMangaChapter(mangaName, mangaChapter, retry + 1)
         }
         return []
