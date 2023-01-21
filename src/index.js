@@ -32,6 +32,7 @@ const getMangaChapter = async (mangaName, mangaChapter, retry = 0) => {
 const mangabot = (client, message) => {
     const commands = {
         mangabot: "/mangabot",
+        hello: ["oi", "ola", "olá", "eae", "e aí", "eai", "opa", "oi mangabot", "ola mangabot", "olá mangabot", "eae mangabot", "e aí mangabot", "eai mangabot", "opa mangabot"],
         help: "/help"
     }
 
@@ -80,6 +81,10 @@ const mangabot = (client, message) => {
         case commands.help:
             client.sendText(message.from, "Comandos disponíveis: \n/mangabot [nome do mangá] [capítulo]")
             break;
+    }
+
+    if (commands.hello.includes(message.text.toLowerCase())) {
+        client.sendText(message.from, "Olá! Eu sou o Mangabot. Posso te ajudar a ler mangás. Digite /help para ver os comandos disponíveis.")
     }
 }
 
