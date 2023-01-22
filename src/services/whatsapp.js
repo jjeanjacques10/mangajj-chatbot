@@ -1,31 +1,7 @@
-
-import axios from 'axios'
-
-const getMangaChapter = async (mangaName, mangaChapter, retry = 0) => {
-    try {
-        const chapter = await axios.get(`http://ec2-184-72-101-57.compute-1.amazonaws.com/chapter?source=manga_livre&manga=${mangaName}&number=${mangaChapter}`)
-        let pagesOrdered = chapter.data.pages.sort((a, b) => {
-            var itemA = a.split("=").pop().split("_")[0]
-            var itemB = b.split("=").pop().split("_")[0]
-            return itemA - itemB
-        })
-        return pagesOrdered
-    } catch (error) {
-        if (retry < 2) {
-            await new Promise(resolve => setTimeout(resolve, 20000)); // wating 20 seconds to retry
-            return getMangaChapter(mangaName, mangaChapter, retry + 1)
-        }
-        return []
-    }
-}
+import commands from '../utils/commands.js'
+import MangaService from './manga.service.js';
 
 const mangabot = (client, message) => {
-    const commands = {
-        mangabot: "/mangabot",
-        hello: ["oi", "ola", "olá", "eae", "e aí", "eai", "opa", "oi mangabot", "ola mangabot", "olá mangabot", "eae mangabot", "e aí mangabot", "eai mangabot", "opa mangabot"],
-        help: "/help"
-    }
-
     let command = message.text.indexOf(" ") > -1 ?
         message.text.substring(0, message.text.indexOf(" ")) : message.text
 
@@ -40,7 +16,7 @@ const mangabot = (client, message) => {
 
                 client.sendText(message.from, `Buscando o capítulo ${mangaChapter} de ${mangaName}...`)
 
-                getMangaChapter(mangaName, mangaChapter, 0).then((pages) => {
+                MangaService.getMangaChapter(mangaName, mangaChapter, 0).then((pages) => {
                     if (pages === null || pages.length === 0) {
                         client.sendText(message.from, "Capítulo sendo baixado ou não encontrado. Aguarde alguns minutos e tente novamente.")
                         return

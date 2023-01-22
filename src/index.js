@@ -1,6 +1,8 @@
-import dotenv from 'dotenv';
-import start from './services/whatsapp.js';
+import * as dotenv from 'dotenv'
+dotenv.config()
 import { create } from 'venom-bot'
+import start from './services/whatsapp.js';
+import startTelegramBot from './services/telegram.js';
 
 function startBot() {
     const args = process.argv
@@ -15,8 +17,10 @@ function startBot() {
             .catch((erro) => {
                 console.log(erro)
             })
-    } else if (args.includes('telegram')) {
+    }
+    if (args.includes('telegram')) {
         console.log("Start telegram bot")
+        startTelegramBot()
     }
 }
 

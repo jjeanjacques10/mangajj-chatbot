@@ -1,4 +1,4 @@
-# Manga Reader - Chatbot WhatsApp
+# Manga Reader - Chatbot WhatsApp and Telegram
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/jjeanjacques10/mangajj/main/files/MangaJJLogo.jpg" width="300"/>
@@ -37,13 +37,13 @@ This is a simple chatbot for WhatsApp that allows you to read manga from the int
 npm install
 ```
 
-2. Run the project
+2. Run the project - Select the platform `whatsapp` or `telegram`
 
 ```bash
-npm start
+npm start <platform>
 ```
 
-3. Scan the QR code with your WhatsApp
+3. If whatsapp so scan the QR code with your WhatsApp
 
 <img src="./files/qrcode.png" width=400/>
 
@@ -51,7 +51,26 @@ npm start
 
 Example: `/mangabot Naruto 698`
 
-<img src="./files/whatsapp.png" width=400/>
+<table>
+    <tr>
+        <td align="center">
+            <h3>WhatsApp</h3>
+            <img src="./files/whatsapp.png" width=400/>
+        </td>
+        <td align="center">
+            <h3>Telegram</h3>
+            <img src="./files/telegram.png" width=350/>
+        </td>
+    </tr>
+</table>
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file if using the `telegram` platform:
+
+``` .env
+TELEGRAM_BOT_TOKEN=
+```
 
 ## Integrations
 
