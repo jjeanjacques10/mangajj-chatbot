@@ -6,6 +6,7 @@ import MangaService from './manga.service.js';
 export default function startTelegramBot() {
 
     const token = process.env.TELEGRAM_BOT_TOKEN;
+    const HELLO_MESSAGE = "Olá, eu sou o Mangabot! \n\nPara saber os comandos disponíveis, digite /help"
 
     const bot = new TelegramBot(token, { polling: true });
 
@@ -45,17 +46,19 @@ export default function startTelegramBot() {
     bot.onText(/\/help/, (msg) => {
         const chatId = msg.chat.id;
 
-        // send a message to the chat acknowledging receipt of their message
         bot.sendMessage(chatId, "Comandos disponíveis: \n/mangabot [nome do mangá] [número capítulo] \n\n Exemplo: /mangabot Naruto 698");
     })
 
     commands.hello.map((command) => {
         bot.onText(new RegExp(command, 'i'), (msg) => {
             const chatId = msg.chat.id;
-
-            // send a message to the chat acknowledging receipt of their message
-            bot.sendMessage(chatId, "Olá, eu sou o Mangabot! \n\nPara saber os comandos disponíveis, digite /help");
+            bot.sendMessage(chatId, HELLO_MESSAGE);
         })
+    })
+
+    bot.onText(/\/start/, (msg) => {
+        const chatId = msg.chat.id;
+        bot.sendMessage(chatId, HELLO_MESSAGE);
     })
 
 }
