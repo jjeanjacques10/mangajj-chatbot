@@ -35,7 +35,6 @@ This is a simple chatbot for WhatsApp that allows you to read manga from the int
 
 ```bash
 npm install
-docker-compose up manga_consumer --build --scale manga_consumer=10 -d
 ```
 
 2. Run the project - Select the platform `whatsapp` or `telegram`
