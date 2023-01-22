@@ -35,6 +35,7 @@ This is a simple chatbot for WhatsApp that allows you to read manga from the int
 
 ```bash
 npm install
+docker-compose up manga_consumer --build --scale manga_consumer=10 -d
 ```
 
 2. Run the project - Select the platform `whatsapp` or `telegram`
@@ -60,6 +61,7 @@ Example: `/mangabot Naruto 698`
         <td align="center">
             <h3>Telegram</h3>
             <img src="./files/telegram.png" width=350/>
+            <a href="https://t.me/mangajjbot">Demo</a>
         </td>
     </tr>
 </table>
