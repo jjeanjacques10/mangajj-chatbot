@@ -82,10 +82,13 @@ This project integrates with the following services:
 
 <img src="./files/diagram.jpg"/>
 
-## Authors
-
-- **Jean Jacques Barros** - [jjeanjacques10](http://github.com/jjeanjacques10)
-
 ## License
 
 [MIT License](LICENSE)
+
+## ⚠ Atention ⚠
+
+This project is for study purposes only, I do not encourage piracy. If you like the manga, buy it. If you want to read it for free, go to the official website. I am not responsible for any misuse of this project.
+
+---
+Developed by [Jean Jacques Barros](https://github.com/jeanjacques10)
