@@ -14,7 +14,7 @@ class MangaService {
         } catch (error) {
             if (retry < 2) {
                 await new Promise(resolve => setTimeout(resolve, 20000)); // wating 20 seconds to retry
-                return getMangaChapter(mangaName, mangaChapter, retry + 1)
+                return this.getMangaChapter(mangaName, mangaChapter, retry + 1)
             }
             return []
         }
