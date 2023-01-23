@@ -6,6 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
+    "start:whatsapp": "node src/index.js whatsapp",
+    "start:telegram":"node src/index.js telegram",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
