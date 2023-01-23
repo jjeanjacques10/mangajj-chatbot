@@ -1,4 +1,5 @@
 import commands from '../utils/commands.js'
+import logger from '../utils/logger.js';
 import MangaService from './manga.service.js';
 
 const mangabot = (client, message) => {
@@ -14,7 +15,7 @@ const mangabot = (client, message) => {
                 const mangaName = manga.split(" ").slice(1, -1).join(" ");
                 const mangaChapter = manga.split(" ").pop()
 
-                logger(`${message.sender.displayName}: ${message.text}`)
+                logger(`${message?.sender?.displayName}: ${message.text}`)
                 client.sendText(message.from, `Buscando o capítulo ${mangaChapter} de ${mangaName}...`)
 
                 MangaService.getMangaChapter(mangaName, mangaChapter, 0).then((pages) => {
