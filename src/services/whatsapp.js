@@ -14,12 +14,14 @@ const mangabot = (client, message) => {
             } else {
                 const mangaName = manga.split(" ").slice(1, -1).join(" ");
                 const mangaChapter = manga.split(" ").pop()
+                const username = message?.sender?.displayName ?? "Anônimo"
 
-                logger(`${message?.sender?.displayName}: ${message.text}`)
+                logger(`${username}: ${message.text}`)
                 client.sendText(message.from, `Buscando o capítulo ${mangaChapter} de ${mangaName}...`)
 
                 MangaService.getMangaChapter(mangaName, mangaChapter, 0).then((pages) => {
                     if (pages === null || pages.length === 0) {
+                        logger(`${username} response: Capítulo não encontrado: ${mangaName} - ${mangaChapter}`)	
                         client.sendText(message.from, "Capítulo sendo baixado ou não encontrado. Aguarde alguns minutos e tente novamente.")
                         return
                     }
