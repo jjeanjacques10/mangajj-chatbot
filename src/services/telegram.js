@@ -1,6 +1,7 @@
 import TelegramBot from 'node-telegram-bot-api'
 
 import commands from '../utils/commands.js'
+import logger from '../utils/logger.js';
 import MangaService from './manga.service.js';
 
 export default function startTelegramBot() {
@@ -15,10 +16,12 @@ export default function startTelegramBot() {
         const manga = request[1];
         const chapter = request[2];
 
+        logger(`${msg.from.username}: ${msg.text}`)
         bot.sendMessage(chatId, `Buscando o capítulo ${chapter} de ${manga}...`);
 
         MangaService.getMangaChapter(manga, chapter, 0).then((pages) => {
             if (pages === null || pages.length === 0) {
+                logger(`${msg.from.username} response: Capítulo não encontrado: ${manga} - ${chapter}`)	
                 bot.sendMessage(chatId, "Capítulo sendo baixado ou não encontrado. Aguarde alguns minutos e tente novamente.")
                 return
             }
@@ -46,6 +49,7 @@ export default function startTelegramBot() {
     bot.onText(/\/help/, (msg) => {
         const chatId = msg.chat.id;
 
+        logger(`${msg.from.username}: ${msg.text}`)
         bot.sendMessage(chatId, "Comandos disponíveis: \n/mangabot [nome do mangá] [número capítulo] \n\n Exemplo: /mangabot Naruto 698");
     })
 
@@ -58,6 +62,8 @@ export default function startTelegramBot() {
 
     bot.onText(/\/start/, (msg) => {
         const chatId = msg.chat.id;
+
+        logger(`${msg.from.username}: ${msg.text}`)
         bot.sendMessage(chatId, HELLO_MESSAGE);
     })
 
