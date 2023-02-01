@@ -82,6 +82,8 @@ This project integrates with the following services:
 
 <img src="./files/diagram.jpg"/>
 
+More information about the API can be found in these article [TabNews - MangaBot](https://www.tabnews.com.br/jjeanjacques10/chatbot-manga-reader-whatsapp-e-telegram)
+
 ## License
 
 [MIT License](LICENSE)
