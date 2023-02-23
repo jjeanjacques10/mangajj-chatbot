@@ -56,7 +56,7 @@ function get_manga_images(bot, chatId, manga, chapter) {
 
     MangaService.getMangaChapter(manga, chapter, 0).then((pages) => {
         if (pages === null || pages.length === 0) {
-            logger(`${msg.from.username} response: Capítulo não encontrado: ${manga} - ${chapter}`)
+            logger(`response: Capítulo não encontrado: ${manga} - ${chapter}`)
             bot.sendMessage(chatId, "Capítulo sendo baixado ou não encontrado. Aguarde alguns minutos e tente novamente.")
             return
         }
