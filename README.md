@@ -71,6 +71,7 @@ To run this project, you will need to add the following environment variables to
 
 ``` .env
 TELEGRAM_BOT_TOKEN=
+MANGA_URL=
 ```
 
 ## Integrations
