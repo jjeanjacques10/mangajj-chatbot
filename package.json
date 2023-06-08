@@ -19,6 +19,6 @@
     "axios": "^1.2.3",
     "dotenv": "^16.0.3",
     "node-telegram-bot-api": "^0.61.0",
-    "venom-bot": "^4.3.7"
+    "venom-bot": "^5.0.1"
   }
 }
