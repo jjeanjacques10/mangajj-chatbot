@@ -1,9 +1,6 @@
 # Manga Reader - Chatbot WhatsApp and Telegram
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/jjeanjacques10/mangajj/main/files/MangaJJLogo.jpg" width="300"/>
-    <br />
-    <br />
     <a href="https://mangajj.herokuapp.com/manga?limit=10&page=0&title=Naruto">Demo</a>
     ·
     <a href="https://github.com/jjeanjacques10/mangajj-whatsapp/issues">Report Bug</a>
